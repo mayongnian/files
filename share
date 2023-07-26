@@ -1,0 +1,20 @@
+
+//非ie自动打开32位ie浏览器 add by llq
+		function openIE(){
+			//开启了iwebnet
+		 	if (EpFrameSysParams.useiwebnet == '1') {
+				//加个容错，防止用户的驱动不是最新导致ie打开失败 edit by llq 2022-03-25
+				try{
+					var epca = new EpCaObj(false);
+					epca.NewBrowserPage(Util.getRootPath());
+				}catch(e){
+					
+				}
+			}
+		}
+
+
+epoint.alert('系统检测到您正在使用非IE浏览器，为保障您正常操作，建议使用IE浏览器！', null, function() {
+							openIE();
+						});
+
